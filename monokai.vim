@@ -1,7 +1,6 @@
 " Vim color file
 " " Converted from Textmate theme Monokai Refined using Coloration v0.3.2
 " (http://github.com/sickill/coloration)
-
 set background=dark
 highlight clear
 
@@ -11,10 +10,10 @@ endif
 let g:colors_name = "monokai"
 
 hi LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-hi Cursor ctermfg=234 ctermbg=231 cterm=NONE guifg=#212121 guibg=#f8f8f0 gui=NONE
+hi Cursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#212121 guibg=#f8f8f0 gui=NONE
 hi Visual ctermfg=NONE ctermbg=238 cterm=NONE guifg=NONE guibg=#444444 gui=NONE
-hi CursorLine ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#373736 gui=NONE
-hi CursorColumn ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#373736 gui=NONE
+hi CursorLine ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#373736 gui=NONE
+hi CursorColumn ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#373736 gui=NONE
 hi ColorColumn ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#373736 gui=NONE
 hi LineNr ctermfg=245 ctermbg=59 cterm=NONE guifg=#8d8d8a guibg=#373736 gui=NONE
 hi VertSplit ctermfg=59 ctermbg=59 cterm=NONE guifg=#5f5f5e guibg=#5f5f5e gui=NONE
@@ -32,7 +31,7 @@ hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NON
 
 hi Boolean ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Character ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
-hi Comment ctermfg=240  ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=italic
+hi Comment ctermfg=242  ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=italic
 hi Conditional ctermfg=197 ctermbg=NONE cterm=bold guifg=#f92672 guibg=NONE gui=bold
 hi Constant ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Define ctermfg=197 ctermbg=NONE cterm=bold guifg=#f92672 guibg=NONE gui=bold
@@ -150,4 +149,7 @@ hi javaConstant ctermfg=81 gui=italic guifg=#66d9ef
 hi javaSpecial ctermfg=81 gui=italic guifg=#66d9ef
 
 
+" go synatax
 
+
+" vim-indent-guides

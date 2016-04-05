@@ -9,6 +9,7 @@ if $SHELL =~ 'bin/fish'
     set shell=/bin/sh
 endif
 
+set t_Co=256
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -28,13 +29,17 @@ Plugin 'bling/vim-airline'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/neocomplete.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
     
 
 
+"set foldmethod=syntax
 
+
+set nofoldenable
 
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
  
@@ -44,12 +49,13 @@ set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
                     " Spaces are used in indents with the '>' and '<' commands
                     " and when 'autoindent' is on. To insert a real tab when
                     " 'expandtab' is on, use CTRL-V <Tab>.
- 
-"set smarttab        " When on, a <Tab> in front of a line inserts blanks
+
+set smarttab        " When on, a <Tab> in front of a line inserts blanks
                     " according to 'shiftwidth'. 'tabstop' is used in other
                     " places. A <BS> will delete a 'shiftwidth' worth of space
                     " at the start of the line.
 
+    
 set relativenumber " relative number
 
 set showcmd         " Show (partial) command in status line.
@@ -67,9 +73,9 @@ set hlsearch        " When there is a previous search pattern, highlight all
 set incsearch       " While typing a search command, show immediately where the
                     " so far typed pattern matches.
  
-"set ignorecase      " Ignore case in search patterns.
+set ignorecase      " Ignore case in search patterns.
  
-"set smartcase       " Override the 'ignorecase' option if the search pattern
+set smartcase       " Override the 'ignorecase' option if the search pattern
                     " contains upper case characters.
  
 set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
@@ -100,6 +106,8 @@ set formatoptions=c,q,r,t " This is a sequence of letters which describes how
 set ruler           " Show the line and column number of the cursor position,
                     " separated by a comma.
  
+set cursorline
+
 set background=light " When set to "dark", Vim will try to use colors that look
                     " good on a dark background. When set to "light", Vim will
                     " try to use colors that look good on a light background.
@@ -107,7 +115,7 @@ set background=light " When set to "dark", Vim will try to use colors that look
  
 " set mouse=a
  
-set pastetoggle=<F9>	" open/close paste
+set pastetoggle=<F9>    " open/close paste
 
 syntax on
 
@@ -128,8 +136,8 @@ colorscheme monokai
 " This comes first, because we have mappings that depend on leader
 " " With a map leader it's possible to do extra key combinations
 " " i.e: <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = ";"
+let g:mapleader = ";"
 
 
 
@@ -181,30 +189,51 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.class,*/*.o,*/test-classes/*,*/tar
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
 let g:go_fmt_fail_silently = 0
+let g:go_jump_to_error = 0
 let g:go_highlight_space_tab_error = 0
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 0
-let g:go_highlight_operators = 0
+let g:go_highlight_extra_types = 1 
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+
 
 au FileType go nmap <Leader>s <Plug>(go-def-split)
 au FileType go nmap <Leader>v <Plug>(go-def-vertical)
 au FileType go nmap <Leader>in <Plug>(go-info)
 au FileType go nmap <Leader>ii <Plug>(go-implements)
 
-au FileType go nmap <leader>r  <Plug>(go-run)
+au FileType go nmap <leader>r  :GoRun<TAB>%<CR>
 au FileType go nmap <leader>b  <Plug>(go-build)
 au FileType go nmap <leader>g  <Plug>(go-gbbuild)
 au FileType go nmap <leader>t  <Plug>(go-test-compile)
 au FileType go nmap <Leader>d <Plug>(go-doc)
 au FileType go nmap <Leader>f :GoImports<CR>
-
+au FileType go nmap <leader>W <Plug>(go-def-tab)
+au FileType go nmap <leader>w <Plug>(go-def)
+au FileType go nmap <leader>h <Plug>(go-callers)
+au FileType go nmap <leader><c-h> <Plug>(go-callstack)
 
 " ==================== neocomplete  ====================
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neoComplcache_disableautocomplete=1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-g>     neocomplete#undo_completion()
+
+
 
 
 
 
 " ==========================================================
 " nnoremap <silent> <c-w> bve
+"
+"
+"
+nnoremap <leader><F4>  <Esc>:%!python -m json.tool<CR>
+autocmd FileType javascript nnoremap <leader>r <Esc>:!node %<CR>
